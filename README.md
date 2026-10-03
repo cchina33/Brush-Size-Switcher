@@ -1,7 +1,5 @@
 # BrushSizeSW (Brush Size Switcher)
 
-![Adobe Photoshop](<https://img.shields.io/badge/Photoshop-2022%20(v23.0%2B)-001E36?style=flat&logo=adobephotoshop&logoColor=31A8FF>)
-
 Photoshop上で、**ブラシ**および**消しゴム**のサイズをワンクリックで瞬時に切り替えることができるUXPパネルプラグインです。  
 ペイント作業やレタッチ、マスキング作業中のブラシサイズ調整の手間を大幅に軽減します。
 
@@ -66,7 +64,7 @@ Photoshop上で、**ブラシ**および**消しゴム**のサイズをワンク
 
 ---
 
-## 📖 使い方
+## 使い方
 
 1. Photoshopを起動し、任意の画像または新規ドキュメントを開きます。
 2. メニューバーの `プラグイン` ＞ `BrushSizeSW` ＞ `BrushSizeSW` から本パネルを表示します。  
@@ -106,6 +104,6 @@ Brush Size Switcher/
 
 ---
 
-## 📄 ライセンス
+## ライセンス
 
 本プロジェクトは [MIT License](LICENSE) のもとで公開されています。（用途に合わせて適宜変更してください）
