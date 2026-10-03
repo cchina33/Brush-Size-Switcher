@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-user-select: none;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: #323232;
+      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .grid-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      padding: 4px;
+      background-color: #202020;
+      width: 100%;
+      justify-content: flex-start;
+      align-content: flex-start;
+    }
+    .btn {
+      flex: 1 0 34px;
+      max-width: 56px;
+      min-width: 32px;
+      height: 42px;
+      background-color: #3a3a3a;
+      border: 1px solid #4a4a4a;
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 3px;
+      cursor: pointer;
+      transition: background-color 0.1s ease, border-color 0.1s ease;
+    }
+    .btn:hover {
+      background-color: #484848;
+      border-color: #666666;
+    }
+    .btn:active {
+      background-color: #2a2a2a;
+    }
+    .btn.active {
+      background-color: #264a7f;
+      border-color: #3884ff;
+    }
+    .circle-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .circle {
+      background-color: #ffffff;
+      border-radius: 50%;
+      display: inline-block;
+      pointer-events: none;
+    }
+    .label {
+      line-height: 1;
+      font-size: 11px;
+      font-weight: 500;
+      color: #dddddd;
+      pointer-events: none;
+    }
+    .btn.active .label {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 5px 8px;
+      background-color: #262626;
+      border-bottom: 1px solid #1e1e1e;
+      font-size: 11px;
+    }
+    .header-title {
+      color: #aaaaaa;
+      font-weight: 500;
+    }
+    .header-size {
+      color: #58a6ff;
+      font-weight: bold;
+      background-color: #16263d;
+      padding: 2px 8px;
+      border-radius: 3px;
+      border: 1px solid #284b77;
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 130px;
+    }
+    .header-size.error {
+      color: #ff7b72;
+      background-color: #3e1b1b;
+      border-color: #7a2828;
+    }
+
+    /* 各サイズごとの丸の大きさ設定 */
+    .s-1   { width: 2px; height: 2px; }
+    .s-2   { width: 3px; height: 3px; }
+    .s-3   { width: 4px; height: 4px; }
+    .s-4   { width: 5px; height: 5px; }
+    .s-5   { width: 6px; height: 6px; }
+    .s-6   { width: 7px; height: 7px; }
+    .s-7   { width: 8px; height: 8px; }
+    .s-8   { width: 9px; height: 9px; }
+    .s-9   { width: 10px; height: 10px; }
+    .s-10  { width: 11px; height: 11px; }
+    .s-big { width: 14px; height: 14px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="header-title">ブラシサイズ</span>
+    <span id="current-size" class="header-size">選択中: -</span>
+  </div>
+  <div class="grid-container">
+    <!-- 1行目 -->
+    <div class="btn" data-size="1"><div class="circle-wrap"><span class="circle s-1"></span></div><span class="label">1</span></div>
+    <div class="btn" data-size="2"><div class="circle-wrap"><span class="circle s-2"></span></div><span class="label">2</span></div>
+    <div class="btn" data-size="3"><div class="circle-wrap"><span class="circle s-3"></span></div><span class="label">3</span></div>
+    <div class="btn" data-size="4"><div class="circle-wrap"><span class="circle s-4"></span></div><span class="label">4</span></div>
+    <div class="btn" data-size="5"><div class="circle-wrap"><span class="circle s-5"></span></div><span class="label">5</span></div>
+    <!-- 2行目 -->
+    <div class="btn" data-size="6"><div class="circle-wrap"><span class="circle s-6"></span></div><span class="label">6</span></div>
+    <div class="btn" data-size="7"><div class="circle-wrap"><span class="circle s-7"></span></div><span class="label">7</span></div>
+    <div class="btn" data-size="8"><div class="circle-wrap"><span class="circle s-8"></span></div><span class="label">8</span></div>
+    <div class="btn" data-size="9"><div class="circle-wrap"><span class="circle s-9"></span></div><span class="label">9</span></div>
+    <div class="btn" data-size="10"><div class="circle-wrap"><span class="circle s-10"></span></div><span class="label">10</span></div>
+    <!-- 3行目 -->
+    <div class="btn" data-size="12"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">12</span></div>
+    <div class="btn" data-size="14"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">14</span></div>
+    <div class="btn" data-size="16"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">16</span></div>
+    <div class="btn" data-size="18"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">18</span></div>
+    <div class="btn" data-size="20"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">20</span></div>
+    <!-- 4行目 -->
+    <div class="btn" data-size="25"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">25</span></div>
+    <div class="btn" data-size="30"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">30</span></div>
+    <div class="btn" data-size="35"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">35</span></div>
+    <div class="btn" data-size="40"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">40</span></div>
+    <div class="btn" data-size="45"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">45</span></div>
+    <!-- 5行目 -->
+    <div class="btn" data-size="50"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">50</span></div>
+    <div class="btn" data-size="60"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">60</span></div>
+    <div class="btn" data-size="70"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">70</span></div>
+    <div class="btn" data-size="80"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">80</span></div>
+    <div class="btn" data-size="90"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">90</span></div>
+    <!-- 6行目 -->
+    <div class="btn" data-size="100"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">100</span></div>
+    <div class="btn" data-size="120"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">120</span></div>
+    <div class="btn" data-size="140"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">140</span></div>
+    <div class="btn" data-size="160"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">160</span></div>
+    <div class="btn" data-size="180"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">180</span></div>
+    <!-- 7行目 -->
+    <div class="btn" data-size="200"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">200</span></div>
+    <div class="btn" data-size="250"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">250</span></div>
+    <div class="btn" data-size="300"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">300</span></div>
+    <div class="btn" data-size="350"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">350</span></div>
+    <div class="btn" data-size="400"><div class="circle-wrap"><span class="circle s-big"></span></div><span class="label">400</span></div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
