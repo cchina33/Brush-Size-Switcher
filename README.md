@@ -106,4 +106,4 @@ Brush Size Switcher/
 
 ## ライセンス
 
-本プロジェクトは [MIT License](LICENSE) のもとで公開されています。（用途に合わせて適宜変更してください）
+本プロジェクトは [MIT License](LICENSE) のもとで公開されています。
